@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WebSocket File Transfer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Landing Page Container -->
+     <div id="main_layout">
+        <div id="landing_page_container">
+            <!-- section 1: header -->
+            <div id="header">
+                <h1>File Transfer With WebSockets</h1>
+                <p>Transfer files to another user through your browser or phone.</p>
+                <br>
+                <form id="username_form">
+                    <input type="text" id="username" autocomplete="off" placeholder="To begin, enter a username"/>
+                    <button id="username_submit">Submit</button>
+                </form>
+                <br>
+                
+            </div>
+        
+            <!-- section 2: File UI Elements -->
+            <div id="file_transfer_wrapper">
+                <h4>Getting started</h4>
+                <ol>
+                    <li>The file is split into chunks which are then transferred via the <strong>WebSocket</strong> protocol.</li>
+                    <li>Send and receive progress is monitored using the HTML5 <i>progress</i> element.</li>
+                    <li>At the receiver end, the file is reassembled using the Blob API and made available for download.</li>
+                </ol>
+                <!-- receivers username -->
+                 <br>
+                <label for="receiver_id">Choose user to send file to:</label>
+                <select id="receiver_id">
+                    <option value="">Select user</option>
+                </select>
+                <br>
+
+                <!-- upload file frontend -->
+                <label for="file_upload_input">Upload File:</label>
+                <input type="file" id="file_upload_input" disabled />
+                <span id="file_selection_status"></span>
+
+                <!-- send/stop buttons -->
+                <br>
+                <button id="send_file_button" disabled>Send</button>
+                <button id="abort_file_button" disabled>Stop</button>
+                <button id="saveFileButton" style="display:none;" disabled></button>
+                
+                <!-- progress display -->
+                <br><br>
+                <div class="progress">
+                    <div class="label">Send progress: </div>
+                    <progress id="send_progress" max="0" value="0"></progress>
+                </div>
+
+                <div class="progress">
+                    <div class="label">Receive progress: </div>
+                    <progress id="receive_progress" max="0" value="0"></progress>
+                </div>
+            </div>
+
+            <!-- info about file transfer  -->
+            <div id="stats"></div>
+            <a id="download_link">
+        
+        <br>
+    </div>
+    <script type="module" src="main.js"></script>
+    
+</body>
+</html>
